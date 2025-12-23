@@ -1,0 +1,15 @@
+{
+  "name": "CS F342 CA Labs",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mshr-h.veriloghdl",
+        "wavetrace.vaporview"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
