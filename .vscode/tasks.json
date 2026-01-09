@@ -5,17 +5,17 @@
     {
       "id": "lab",
       "type": "promptString",
-      "description": "Enter lab (e.g. lab1)"
+      "description": "Enter lab (e.g. lab01)"
     },
     {
       "id": "task",
       "type": "promptString",
-      "description": "Enter task (e.g. task2)"
+      "description": "Enter task (e.g. task0)"
     },
     {
       "id": "tb",
       "type": "promptString",
-      "description": "Enter testbench file (e.g. tb_fa.v)"
+      "description": "Enter testbench file (e.g. tb_mux.v)"
     }
   ],
 
