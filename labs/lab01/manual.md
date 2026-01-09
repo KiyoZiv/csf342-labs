@@ -117,8 +117,8 @@ endmodule
 ### 2.5 Simulation and Waveforms
 
 During simulation:
-- Signal values over time can be dumped into a **VCD (Value Change Dump)** file
-- Waveforms can be viewed using **VaporView** inside VS Code
+- Signal values over time can be dumped into a **VCD (Value Change Dump)** file (see the testbench, and Google 'verilog dumpvars' to learn more about the syntax).
+- Waveforms can be viewed using **VaporView** inside VS Code.
 
 Waveforms are used for **debugging and understanding behavior**.
 
@@ -145,6 +145,8 @@ labs/lab1/
 │   ├── tb_fa.v
 │   ├── tb_adder4.v
 │   └── tb_adder4_sub.v
+├── shared/
+│   └── module.v
 └── README.md
 ```
 
@@ -158,7 +160,7 @@ Additional folders:
 
 You will work entirely inside **GitHub Codespaces**.
 
-Tools used:
+Tools used (these are already set up in the codespace for you to use):
 - Icarus Verilog – compilation and simulation
 - VS Code Tasks – running compile and simulation commands
 - VaporView – waveform viewing (debugging only)
@@ -181,7 +183,7 @@ In this task, you will **not write any code**. Instead, you will:
 ### Files
 - Design:
   ```
-  labs/lab1/task0/mux2_behavioral.v
+  labs/lab1/task0/dut.v
   ```
 - Testbench:
   ```
@@ -208,7 +210,7 @@ In this task, you will **not write any code**. Instead, you will:
 ## 6. How to Compile and Simulate (General)
 
 When running a simulation, you must specify:
-1. Lab (e.g. lab1)
+1. Lab (e.g. lab01)
 2. Task (e.g. task2)
 3. Testbench (e.g. tb_fa.v)
 
@@ -217,11 +219,17 @@ Simulation outputs are generated in:
 artefacts/lab1/
 ```
 
+### Upon completion
+Once you verify that the output is correct:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task0`
+3. Push the commit to GitHub (press the `sync` button)
+
 ---
 
 ## 7. Lab Tasks
 
-Task 1 – Structural Modeling (Gate-Level)
+Task 1 – Structural Modeling (Gate-Level)  
 Objective:
 Implement a 1-bit full adder using structural (gate-level) Verilog.
 
@@ -231,14 +239,22 @@ Requirements:
 - No always blocks
 
 File:
-labs/lab1/task1/dut.v
+labs/lab01/task1/dut.v
 
 Testbench:
 tb_fa.v
 
+Open this file and understand how the testbench works by reading through all the comments carefully. _Next lab onwards you will write your own test benches._
+
+### Upon completion
+Once you verify your solution and are ready to submit:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task1`
+3. Push the commit to GitHub
+
 ---
 
-Task 2 – Dataflow Modeling 2
+Task 2 – Dataflow Modeling  
 Objective:
 Implement the same full adder using dataflow modeling.
 
@@ -249,48 +265,67 @@ Requirements:
 - No always blocks
 
 File:
-labs/lab1/task2/dut.v
+labs/lab01/task2/dut.v
 
 Testbench:
 tb_fa.v
 
+### Upon completion
+Once you verify your solution and are ready to submit:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task2`
+3. Push the commit to GitHub
+
 ---
 
-Task 3 – Behavioral / RTL Modeling
+Task 3 – Behavioral / RTL Modeling  
 Objective:
 Implement the same full adder using behavioral modeling.
 
 Requirements:
 - Use always @(*)
-- Use blocking assignments
-- Ensure purely combinational behavior
 
 File:
-labs/lab1/task3/dut.v
+labs/lab01/task3/dut.v
 
 Testbench:
 tb_fa.v
 
+### Upon completion
+Once you verify your solution and are ready to submit:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task3`
+3. Push the commit to GitHub
+
 ---
 
-Task 4 – Hierarchical Design (4-bit Adder)
+Task 4 – Hierarchical Design (4-bit Adder)  
 Objective:
 Build a 4-bit ripple-carry adder using reusable 1-bit full adders.
 
 Requirements:
 - Use module instantiation
-- Place reusable modules in the shared/ directory
-- Do not copy-paste logic
+- You already built a full adder in task 3. Now copy the file into task 4 directory and rename it as `fa.v`.
+- Also rename the module as `fa` instead of `dut`.
+- Create another file inside task 4 folder named `dut.v`.
+- In this file, instantiate the `fa` module and use it to build a 4-bit adder.
 
 File:
-labs/lab1/task4/dut.v
+labs/lab01/task4/dut.v
+labs/lab01/task4/fa.v
 
 Testbench:
 tb_4bit.v
 
+### Upon completion
+Once you verify your solution and are ready to submit:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task4`
+3. Push the commit to GitHub
+
 ---
 
-Task 5 – Practice: 4-bit Adder–Subtractor
+Task 5 – Practice at home: 4-bit Adder–Subtractor  
 Objective:
 Extend the 4-bit adder to support subtraction.
 
@@ -298,13 +333,21 @@ Requirements:
 - sub = 0 → addition
 - sub = 1 → subtraction
 - Use two’s complement logic
-- Reuse existing modules
+- Reuse existing 4-bit adder module by copying over the files from task 4 folder.
 
 File:
-labs/lab1/task5/dut.v
+labs/lab01/task5/dut.v
+labs/lab01/task5/fa.v
+labs/lab01/task5/adder4bit.v
 
 Testbench:
 tb_4bit_addsub.v
+
+### Upon completion
+Once you verify your solution and are ready to submit:
+1. commit the changes (third button from top in the left sidebar)
+2. Use the exact commit message: `lab01 task5`
+3. Push the commit to GitHub
 
 ---
 
@@ -314,23 +357,6 @@ Required:
 - Clean compilation
 - Correct simulation behavior
 - All test cases pass
-
-Not graded:
-- Waveform screenshots
-- SVG/PNG exports
-- GUI artifacts
-
-Waveforms are a debugging aid, not a submission artifact.
-
----
-
-## 9. Submission Instructions
-
-Commit:
-1. `dut.v` files for completed tasks
-2. This README.md updated with:
-   - Tasks completed
-   - Any assumptions or notes
 
 ---
 
@@ -343,4 +369,3 @@ By completing Lab 1, you should be comfortable:
 - Working with a structured HDL workflow
 
 ---
-End of Lab 1

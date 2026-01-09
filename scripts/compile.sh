@@ -26,6 +26,12 @@ mkdir -p "$ARTEFACT_DIR"
 
 OUT_SIM="${ARTEFACT_DIR}/${TASK}_${TB%.v}.sim"
 
+# Collect Verilog files from task directory
+TASK_FILES=()
+for f in "$TASK_DIR"/*.v; do
+  [ -e "$f" ] && TASK_FILES+=("$f")
+done
+
 # Collect shared files *only if they exist*
 SHARED_FILES=()
 if [ -d "shared" ]; then
@@ -37,7 +43,7 @@ fi
 iverilog -g2012 -Wall \
   -o "$OUT_SIM" \
   "${SHARED_FILES[@]}" \
-  "$DUT_FILE" \
+  "${TASK_FILES[@]}" \
   "$TB_FILE"
 
 echo "✔ Compiled: $OUT_SIM"
