@@ -6,7 +6,7 @@ module tb;
   wire cout;
   string vcd_file;
 
-  bit4add dut(.a(a),.b(b),.cin(cin),.sum(sum),.cout(cout));
+  dut DUT(.a(a),.b(b),.cin(cin),.sum(sum),.cout(cout));
 
   initial begin
     if ($value$plusargs("vcd=%s", vcd_file))

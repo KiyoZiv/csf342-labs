@@ -27,7 +27,7 @@ module tb;
   // ---------------------------------------------------------
   // 'dut' is the module name of the design being tested.
   // 'DUT' is the instance name (Unit Under Test).
-  fa DUT (
+  dut DUT (
     .a(a),       // Connect testbench signal 'a' to DUT port 'a'
     .b(b),       // Connect testbench signal 'b' to DUT port 'b'
     .cin(cin),   // Connect testbench signal 'cin' to DUT port 'cin'
