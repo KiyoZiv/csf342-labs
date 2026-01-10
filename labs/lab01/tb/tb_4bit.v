@@ -14,7 +14,7 @@ module tb;
     else
       $dumpfile("artefacts/default.vcd");
 
-    $dumpvars(0, dut);
+    $dumpvars(0, DUT);
 
     a=4'H0; b=4'H0; cin=0; #10;
     a=4'H6; b=4'HB; cin=1; #10;
