@@ -200,8 +200,8 @@ Design a **simple 8-bit up-counter**.
 Design an FSM-controlled system integrating registers, arithmetic, and user-driven control.
 
 ### Datapath
-- Two 2-bit registers: R0 and R1
-- Arithmetic: add and subtract
+- Two 8-bit registers: R0 and R1 (use one of the modules you wrote in task2)
+- Arithmetic: add and subtract (use the adder-subtractor module from lab01/task5)
 - Write-back to either register
 
 ### Control Inputs
@@ -219,7 +219,7 @@ Destination select button `dest`:
 - 0 → write to R0
 - 1 → write to R1
 
-Buttons are **level-sensitive**.
+Buttons are **level-sensitive** ie button levels are read during clock transition to decide actions; button level changes do not trigger anything.
 
 ---
 
@@ -236,7 +236,7 @@ FSM must be implemented **behaviorally using `case(state)` only**.
 
 ### Reset Behavior
 - Reset places FSM in RUN_WAIT
-- Registers must be initialized to known values
+- Registers must be initialized to known values on reset
 
 ---
 
